@@ -264,9 +264,11 @@ Git
 pip3 freeze > requeriments.txt
 4. git status, para ver que cosas no están añadidas aún. 
 5. git add . -> toma todos los archivos y los guarda
-6. git commit -m""
-7. git log
+6. git commit -m"nombre" -> para guardar
+7. git log -> para ver los commits
 
-
+8. Subirlo a git ->  git remote add origin https://github.com/AlexLaraMerino/romanos
+                     git branch -M main
+                     git push -u origin main
 
 '''
