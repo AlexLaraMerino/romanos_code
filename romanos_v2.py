@@ -97,15 +97,17 @@ def enteroARomano(N):
     longitud = len(lista)
 
     for i in range(longitud):
-        lista[i] = lista[i]+"0"*((len(lista)-1)-i)
+        longitud -= 1
+        lista[i] = lista[i]+"0"*(longitud-i)
+        
     
     return lista
 
 def transformarRomano(N, diccionario):
 
     lista = []
-    for i in range(4): # Índice de la lista original
-        for key,value in ROMANOS.items(): # Cada uno de los diccionarios en orden decreciente
+    for i in range(4):
+        for key,value in ROMANOS.items():
             for _key,_value in value.items():
                 if int(N[i]) == _value:
                     lista.append(_key)
