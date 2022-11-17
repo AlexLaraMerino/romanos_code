@@ -248,7 +248,7 @@ Nosotros podemos tener varios proyectos, usar varias librerias
 de python, y de este modo se encapsula el proyecto. 
 No quieres librerias que no necesitas en un proyecto.
 
-2. Activar el entorno virtual: source /entorno_virtual/bin/activate
+2. Activar el entorno virtual: source entorno_virtual/bin/activate
 3. Desactivar el entorno virtual: deactivate
 
 4. Instalar Pytest en el entorno virtual: pip3 install pytest
@@ -267,8 +267,17 @@ pip3 freeze > requeriments.txt
 6. git commit -m"nombre" -> para guardar
 7. git log -> para ver los commits
 
-8. Subirlo a git ->  git remote add origin https://github.com/AlexLaraMerino/romanos
+8. Subirlo a git ->  git remote add origin https://github.com/AlexLaraMerino/"Repositorio"
                      git branch -M main
                      git push -u origin main
+
+
+Copiar Git desde GitHub
+
+1. Copias con los comandos que te salen
+2. Creas un nuevo entorno y lo activas
+3. Instalas los requerimientos con pip install -r requirements.txt
+
+
 
 '''
