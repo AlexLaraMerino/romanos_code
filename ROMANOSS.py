@@ -16,19 +16,19 @@ f)4.5 -> RomanNumberError("Debe ser un entero")
 # Constantes 
 ROMANOS = {
 
-    1:{'I':1,'II':2,'III':3,
+    "Unidades":{'I':1,'II':2,'III':3,
     'IV':4,'V':5,'VI':6,
     'VII':7,'VIII':8,'IX':9},
 
-    2:{'X':10,'XX':20,'XXX':30,
+    "Decenas":{'X':10,'XX':20,'XXX':30,
     'XL':40,'L':50,'LX':60,
     'LXX':70,'LXXX':80,'XC':90},
 
-    3:{'C':100,'CC':200,'CCC':300,
+    "Centenas":{'C':100,'CC':200,'CCC':300,
     'CD':400,'D':500,'DC':600,
     'DCC':700,'DCCC':800,'CM':900},
 
-    4:{'M':1000,'MM':2000,'MMM':3000}
+    "Millares":{'M':1000,'MM':2000,'MMM':3000}
 }
 
 ROMANOS_OFF = dict(sorted(ROMANOS.items(), key=lambda item:item[0], reverse = True))
@@ -92,21 +92,11 @@ def comprobarInput():
 def enteroARomano(N):
     
     N = str(N)
-    lista = []
-    if len(N) == 3:
-        N = "{:0>4s}".format(N)
-    elif len(N) == 2:
-        N = "{:0>4s}".format(N)
-        N = "{:0>3s}".format(N)
-    elif len(N) == 1:
-        N = "{:0>4s}".format(N)
-        N = "{:0>3s}".format(N)
-        N = "{:0>2s}".format(N)
+    N = "{:0>4s}".format(N)
+    lista = list(N)
+    longitud = len(lista)
 
-    for digito in N:
-            lista.append(digito)
-
-    for i in range(len(lista)):
+    for i in range(longitud):
         lista[i] = lista[i]+"0"*((len(lista)-1)-i)
     
     return lista
