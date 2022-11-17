@@ -27,33 +27,32 @@ class RomanNumberError(Exception):
 #--------------------------------------------------------------------------------------------------
 
 # FUNCIONES  
-def comprobarNumeroInput():
+def comprobarInput():
 
     while True:
         try:
             data = int(input(f'Dime un número para convertir en romano '))
-            return data
+
+            if data <= 0:
+
+                try: 
+                    raise RomanNumberError
+                except RomanNumberError as error:
+                    print(error.nombre)
+                    print(error.error)
+
+            elif data >= 4000:
+                try: 
+
+                    raise RomanNumberError(nombre="RomanNumberError", error="el valor debe ser menor de 4000")
+                except RomanNumberError as error:
+                    print(error.nombre)
+                    print(error.error)
+            else:
+                return data
+
         except ValueError:
             print('El dato debe de ser un número entero')
-    
-
-def acotarNumero(N):
-
-    # Posible mejora con while
-    if N <= 0:
-        try: 
-            raise RomanNumberError
-        except RomanNumberError as error:
-            print(error.nombre)
-            print(error.error)
-
-    elif N >= 4000:
-        try: 
-            raise RomanNumberError(nombre="RomanNumberError", error="el valor debe ser menor de 4000")
-        except RomanNumberError as error:
-            print(error.nombre)
-            print(error.error)
-    else: pass
 
 def correccionSegunReglas(lista):
 
@@ -214,8 +213,7 @@ def correccionSegunReglas(lista):
 romanos = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
 romanosOff = dict(sorted(romanos.items(), key=lambda item:item[1], reverse = True))
 
-N = comprobarNumeroInput()
-acotarNumero(N)
+N = comprobarInput()
 
 numeroRomano = []
 for key, value in romanosOff.items():
@@ -241,43 +239,3 @@ print(numeroFinal)
 # MMCMXCIX 2999
 # MMMCDLVIII 3458
 
-'''
-1. Crear entonno virtual: python3 -m venv "nombre"
-
-Nosotros podemos tener varios proyectos, usar varias librerias 
-de python, y de este modo se encapsula el proyecto. 
-No quieres librerias que no necesitas en un proyecto.
-
-2. Activar el entorno virtual: source entorno_virtual/bin/activate
-3. Desactivar el entorno virtual: deactivate
-
-4. Instalar Pytest en el entorno virtual: pip3 install pytest
-
-5. Hacer pruebas com pytest: pytest (en consola)
-    tiene que tener el nombre test en el nombre del archivo.
-
-Git
-1. iniciar repositorio: git init
-2. Crear archivo .gitignore para seleccionar que archivos
-    de la carpeta no se van a guardar en git.
-3. Crear una carpeta con con los requerimientos:
-pip3 freeze > requeriments.txt
-4. git status, para ver que cosas no están añadidas aún. 
-5. git add . -> toma todos los archivos y los guarda
-6. git commit -m"nombre" -> para guardar
-7. git log -> para ver los commits
-
-8. Subirlo a git ->  git remote add origin https://github.com/AlexLaraMerino/"Repositorio"
-                     git branch -M main
-                     git push -u origin main
-
-
-Copiar Git desde GitHub
-
-1. Copias con los comandos que te salen
-2. Creas un nuevo entorno y lo activas
-3. Instalas los requerimientos con pip install -r requirements.txt
-
-
-
-'''
